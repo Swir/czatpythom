@@ -16,5 +16,11 @@
     "message": "siema",
     "color": "\u001b[32m",
     "timestamp": 1729329840.9291902
+  },
+  {
+    "username": "test1",
+    "message": "br",
+    "color": "\u001b[34m",
+    "timestamp": 1729330130.2754421
   }
 ]
