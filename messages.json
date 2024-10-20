@@ -82,5 +82,11 @@
     "message": "dobrze",
     "color": "\u001b[34m",
     "timestamp": 1729458656.4757998
+  },
+  {
+    "username": "test123",
+    "message": "saasass",
+    "color": "\u001b[34m",
+    "timestamp": 1729458668.297593
   }
 ]
