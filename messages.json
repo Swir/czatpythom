@@ -70,5 +70,11 @@
     "message": "test",
     "color": "\u001b[36m",
     "timestamp": 1729458620.5369024
+  },
+  {
+    "username": "aaaa",
+    "message": "jak sie macie",
+    "color": "\u001b[36m",
+    "timestamp": 1729458630.808331
   }
 ]
