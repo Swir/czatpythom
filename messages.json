@@ -88,5 +88,11 @@
     "message": "wqwqwqwqw",
     "color": "\u001b[31m",
     "timestamp": 1729450435.8216887
+  },
+  {
+    "username": "test2",
+    "message": "qwqqwweqwew",
+    "color": "\u001b[31m",
+    "timestamp": 1729450437.7491543
   }
 ]
