@@ -46,5 +46,11 @@
     "message": "ass",
     "color": "\u001b[32m",
     "timestamp": 1729444679.0675805
+  },
+  {
+    "username": "test1",
+    "message": "asffsd",
+    "color": "\u001b[32m",
+    "timestamp": 1729445518.0569644
   }
 ]
