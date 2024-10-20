@@ -79,8 +79,14 @@
   },
   {
     "username": "test2",
-    "message": "testy",
+    "message": "",
     "color": "\u001b[31m",
-    "timestamp": 1729450376.699268
+    "timestamp": 1729450359.814431
+  },
+  {
+    "username": "sa",
+    "message": "",
+    "color": "\u001b[36m",
+    "timestamp": 1729450419.6302874
   }
 ]
