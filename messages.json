@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "username": "a",
+    "message": "test",
+    "color": "\u001b[34m",
+    "timestamp": 1729456566.3197877
+  }
+]
