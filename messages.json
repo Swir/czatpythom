@@ -58,5 +58,11 @@
     "message": "siemka",
     "color": "green",
     "timestamp": 1729458263.9699948
+  },
+  {
+    "username": "1",
+    "message": "1",
+    "color": "\u001b[32m",
+    "timestamp": 1729458317.8973308
   }
 ]
