@@ -76,5 +76,11 @@
     "message": "jak sie macie",
     "color": "\u001b[36m",
     "timestamp": 1729458630.808331
+  },
+  {
+    "username": "test123",
+    "message": "dobrze",
+    "color": "\u001b[34m",
+    "timestamp": 1729458656.4757998
   }
 ]
