@@ -22,5 +22,11 @@
     "message": "test",
     "color": "\u001b[31m",
     "timestamp": 1729457110.2518578
+  },
+  {
+    "username": "sass",
+    "message": "so  sie dzieje",
+    "color": "\u001b[31m",
+    "timestamp": 1729457121.449198
   }
 ]
