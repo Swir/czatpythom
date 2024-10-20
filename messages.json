@@ -142,5 +142,11 @@
     "message": "ddsfsdfdsfsdfsdfsdf",
     "color": "\u001b[31m",
     "timestamp": 1729455315.7465293
+  },
+  {
+    "username": "test",
+    "message": "siemka siemka",
+    "color": "\u001b[31m",
+    "timestamp": 1729455684.5996354
   }
 ]
