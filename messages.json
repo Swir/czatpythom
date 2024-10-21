@@ -142,5 +142,11 @@
     "message": " wiem",
     "color": "\u001b[32m",
     "timestamp": 1729479425.5673616
+  },
+  {
+    "username": "123",
+    "message": "123",
+    "color": "\u001b[32m",
+    "timestamp": 1729479470.842086
   }
 ]
