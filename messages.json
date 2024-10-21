@@ -532,5 +532,11 @@
     "message": "co tam slychac",
     "color": "\u001b[37m",
     "timestamp": 1729525870.480891
+  },
+  {
+    "username": "test1",
+    "message": "test",
+    "color": "\u001b[34m",
+    "timestamp": 1729526404.0687876
   }
 ]
