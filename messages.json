@@ -196,5 +196,11 @@
     "message": "witam",
     "color": "\u001b[33m",
     "timestamp": 1729479959.7456152
+  },
+  {
+    "username": "wee",
+    "message": "co tam",
+    "color": "\u001b[34m",
+    "timestamp": 1729479971.9531534
   }
 ]
