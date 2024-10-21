@@ -454,5 +454,11 @@
     "message": "a nic a u ciebie jak tam",
     "color": "\u001b[34m",
     "timestamp": 1729523399.2232437
+  },
+  {
+    "username": "test",
+    "message": "test",
+    "color": "\u001b[34m",
+    "timestamp": 1729523658.800404
   }
 ]
