@@ -328,5 +328,11 @@
     "message": "test",
     "color": "\u001b[31m",
     "timestamp": 1729482271.8474996
+  },
+  {
+    "username": "sasaas",
+    "message": "siemanko",
+    "color": "\u001b[31m",
+    "timestamp": 1729482298.9828393
   }
 ]
