@@ -172,5 +172,11 @@
     "message": "saasas",
     "color": "\u001b[32m",
     "timestamp": 1729479675.4550445
+  },
+  {
+    "username": "f",
+    "message": "sasas",
+    "color": "\u001b[36m",
+    "timestamp": 1729479687.736648
   }
 ]
