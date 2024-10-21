@@ -502,5 +502,11 @@
     "message": "test1",
     "color": "\u001b[34m",
     "timestamp": 1729525261.2290392
+  },
+  {
+    "username": "saasasas",
+    "message": "test",
+    "color": "\u001b[34m",
+    "timestamp": 1729525524.7686532
   }
 ]
