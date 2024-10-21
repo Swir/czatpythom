@@ -190,5 +190,11 @@
     "message": "siema",
     "color": "\u001b[34m",
     "timestamp": 1729479939.426336
+  },
+  {
+    "username": "d",
+    "message": "witam",
+    "color": "\u001b[33m",
+    "timestamp": 1729479959.7456152
   }
 ]
