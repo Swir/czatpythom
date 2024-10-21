@@ -526,5 +526,11 @@
     "message": "siemka",
     "color": "\u001b[90m",
     "timestamp": 1729525850.9132328
+  },
+  {
+    "username": "test1",
+    "message": "co tam slychac",
+    "color": "\u001b[37m",
+    "timestamp": 1729525870.480891
   }
 ]
