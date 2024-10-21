@@ -586,5 +586,11 @@
     "message": "haki halo halo",
     "color": "\u001b[94m",
     "timestamp": 1729535134.4204965
+  },
+  {
+    "username": "SAs",
+    "message": "test",
+    "color": "LIGHTBLUE_EX",
+    "timestamp": 1729535940.5703337
   }
 ]
