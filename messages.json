@@ -466,5 +466,11 @@
     "message": "resr",
     "color": "\u001b[34m",
     "timestamp": 1729523685.3112214
+  },
+  {
+    "username": "Test1",
+    "message": "test",
+    "color": "\u001b[34m",
+    "timestamp": 1729524527.7435055
   }
 ]
