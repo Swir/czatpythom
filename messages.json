@@ -544,5 +544,11 @@
     "message": "siema co tam",
     "color": "\u001b[36m",
     "timestamp": 1729526493.1386395
+  },
+  {
+    "username": "test1",
+    "message": "siemkaa nic a u ciebie jal",
+    "color": "\u001b[34m",
+    "timestamp": 1729526509.7673883
   }
 ]
