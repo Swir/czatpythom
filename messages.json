@@ -124,5 +124,12 @@
     "nick_color": "GREEN",
     "text_color": "BLUE",
     "timestamp": 1729624133.4575684
+  },
+  {
+    "username": "sasas",
+    "message": "test",
+    "nick_color": "RED",
+    "text_color": "BLUE",
+    "timestamp": 1729624156.3990393
   }
 ]
