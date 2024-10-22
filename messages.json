@@ -96,5 +96,12 @@
     "nick_color": "GREEN",
     "text_color": "BLUE",
     "timestamp": 1729618355.0313075
+  },
+  {
+    "username": "sassa",
+    "message": "co tan",
+    "nick_color": "GREEN",
+    "text_color": "RED",
+    "timestamp": 1729618380.961819
   }
 ]
