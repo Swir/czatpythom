@@ -610,5 +610,11 @@
     "message": "test",
     "color": "RED",
     "timestamp": 1729566555.749106
+  },
+  {
+    "username": "dasda",
+    "message": "siema",
+    "color": "LIGHTGREEN_EX",
+    "timestamp": 1729566594.887174
   }
 ]
