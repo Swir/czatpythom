@@ -660,5 +660,12 @@
     "nick_color": "BLUE",
     "text_color": "MAGENTA",
     "timestamp": 1729569200.7885714
+  },
+  {
+    "username": "sassASas",
+    "message": "siemka",
+    "nick_color": "BLUE",
+    "text_color": "LIGHTGREEN_EX",
+    "timestamp": 1729569229.5796242
   }
 ]
