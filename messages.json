@@ -5,5 +5,12 @@
     "nick_color": "YELLOW",
     "text_color": "CYAN",
     "timestamp": 1729569414.084879
+  },
+  {
+    "username": "asasfsdfsdaf",
+    "message": "co tam",
+    "nick_color": "CYAN",
+    "text_color": "LIGHTGREEN_EX",
+    "timestamp": 1729569477.041567
   }
 ]
