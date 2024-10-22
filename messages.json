@@ -653,5 +653,12 @@
     "nick_color": "BLUE",
     "text_color": "MAGENTA",
     "timestamp": 1729568638.5690072
+  },
+  {
+    "username": "sd",
+    "message": "test",
+    "nick_color": "BLUE",
+    "text_color": "MAGENTA",
+    "timestamp": 1729569200.7885714
   }
 ]
