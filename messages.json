@@ -616,5 +616,11 @@
     "message": "siema",
     "color": "LIGHTGREEN_EX",
     "timestamp": 1729566594.887174
+  },
+  {
+    "username": "dsad",
+    "message": "co tam",
+    "color": "RED",
+    "timestamp": 1729566607.5772192
   }
 ]
