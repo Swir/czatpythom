@@ -40,5 +40,12 @@
     "nick_color": "BLUE",
     "text_color": "RED",
     "timestamp": 1729609027.3484964
+  },
+  {
+    "username": "testswir",
+    "message": "test",
+    "nick_color": "YELLOW",
+    "text_color": "MAGENTA",
+    "timestamp": 1729609292.6534228
   }
 ]
