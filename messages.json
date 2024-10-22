@@ -604,5 +604,11 @@
     "message": "siemka jak tam",
     "color": "LIGHTBLUE_EX",
     "timestamp": 1729566214.8459015
+  },
+  {
+    "username": "dsad",
+    "message": "test",
+    "color": "RED",
+    "timestamp": 1729566555.749106
   }
 ]
