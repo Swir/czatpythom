@@ -152,5 +152,12 @@
     "nick_color": "GREEN",
     "text_color": "GREEN",
     "timestamp": 1729624863.5057127
+  },
+  {
+    "username": "dsad",
+    "message": "siema",
+    "nick_color": "GREEN",
+    "text_color": "BLUE",
+    "timestamp": 1729625693.1437366
   }
 ]
