@@ -173,5 +173,12 @@
     "nick_color": "GREEN",
     "text_color": "BLUE",
     "timestamp": 1729625969.1383042
+  },
+  {
+    "username": "1",
+    "message": "co kurwa",
+    "nick_color": "BLUE",
+    "text_color": "RED",
+    "timestamp": 1729625982.6076891
   }
 ]
