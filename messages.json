@@ -131,5 +131,12 @@
     "nick_color": "RED",
     "text_color": "BLUE",
     "timestamp": 1729624156.3990393
+  },
+  {
+    "username": "wq",
+    "message": "siema",
+    "nick_color": "GREEN",
+    "text_color": "GREEN",
+    "timestamp": 1729624839.4053924
   }
 ]
