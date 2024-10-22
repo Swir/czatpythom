@@ -19,5 +19,12 @@
     "nick_color": "GREEN",
     "text_color": "BLUE",
     "timestamp": 1729608229.8165898
+  },
+  {
+    "username": "siwr",
+    "message": "test",
+    "nick_color": "BLUE",
+    "text_color": "BLUE",
+    "timestamp": 1729608967.203784
   }
 ]
