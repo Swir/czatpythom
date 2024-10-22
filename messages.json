@@ -598,5 +598,11 @@
     "message": "siemka",
     "color": "BLUE",
     "timestamp": 1729566191.146812
+  },
+  {
+    "username": "test",
+    "message": "siemka jak tam",
+    "color": "LIGHTBLUE_EX",
+    "timestamp": 1729566214.8459015
   }
 ]
