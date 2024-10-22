@@ -646,5 +646,12 @@
     "message": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
     "color": "GREEN",
     "timestamp": 1729567268.6089122
+  },
+  {
+    "username": "1",
+    "message": "asd",
+    "nick_color": "BLUE",
+    "text_color": "MAGENTA",
+    "timestamp": 1729568638.5690072
   }
 ]
