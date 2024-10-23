@@ -12,5 +12,12 @@
     "nick_color": "#0000ff",
     "text_color": "#ff0080",
     "timestamp": 1729652941.8460326
+  },
+  {
+    "username": "asasasas",
+    "message": "test",
+    "nick_color": "#a0a0a0",
+    "text_color": "#00FF00",
+    "timestamp": 1729653035.5117402
   }
 ]
