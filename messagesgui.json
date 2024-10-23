@@ -26,5 +26,12 @@
     "nick_color": "#0000ff",
     "text_color": "#8000ff",
     "timestamp": 1729653055.4327204
+  },
+  {
+    "username": "fsdf",
+    "message": "/clean",
+    "nick_color": "#8000ff",
+    "text_color": "#ff0080",
+    "timestamp": 1729653419.7121506
   }
 ]
