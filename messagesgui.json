@@ -141,5 +141,13 @@
     "text_color": "#ffffff",
     "font_style": "bold",
     "timestamp": 1729693820.1045954
+  },
+  {
+    "username": "wq",
+    "message": "test",
+    "nick_color": "#c0c0c0",
+    "text_color": "#800080",
+    "font_style": "bold italic",
+    "timestamp": 1729693891.7015522
   }
 ]
