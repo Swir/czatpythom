@@ -33,5 +33,12 @@
     "nick_color": "#ff80ff",
     "text_color": "#0000ff",
     "timestamp": 1729710776.81668
+  },
+  {
+    "username": "test",
+    "message": "+RUapiBrnR6iA/GoRGyxgvY8xN3nQe0sDtZkr0m5JZnmV8ufK08=",
+    "nick_color": "#00ff40",
+    "text_color": "#00ffff",
+    "timestamp": 1729711713.0112772
   }
 ]
