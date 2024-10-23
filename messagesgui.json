@@ -117,5 +117,13 @@
     "nick_color": "#8000ff",
     "text_color": "#ff0000",
     "timestamp": 1729693514.6287305
+  },
+  {
+    "username": "teswir",
+    "message": "test",
+    "nick_color": "#0000ff",
+    "text_color": "#ffffff",
+    "font_style": "bold italic",
+    "timestamp": 1729693799.6601179
   }
 ]
