@@ -89,5 +89,12 @@
     "nick_color": "#ff80ff",
     "text_color": "#8000ff",
     "timestamp": 1729692576.520995
+  },
+  {
+    "username": "test swir",
+    "message": "test :D",
+    "nick_color": "#0000ff",
+    "text_color": "#ff0080",
+    "timestamp": 1729693132.0145288
   }
 ]
