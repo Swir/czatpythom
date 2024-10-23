@@ -47,5 +47,12 @@
     "nick_color": "#8080ff",
     "text_color": "#ff0080",
     "timestamp": 1729656522.062855
+  },
+  {
+    "username": "test",
+    "message": "siemanko",
+    "nick_color": "#00ff00",
+    "text_color": "#ff0080",
+    "timestamp": 1729691559.098593
   }
 ]
