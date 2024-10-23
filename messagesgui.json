@@ -40,5 +40,12 @@
     "nick_color": "#ff0080",
     "text_color": "#ff8000",
     "timestamp": 1729656483.9675887
+  },
+  {
+    "username": "12231",
+    "message": "witam",
+    "nick_color": "#8080ff",
+    "text_color": "#ff0080",
+    "timestamp": 1729656522.062855
   }
 ]
