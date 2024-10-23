@@ -5,5 +5,12 @@
     "nick_color": "#00FF00",
     "text_color": "#00FF00",
     "timestamp": 1729627573.123073
+  },
+  {
+    "username": "test",
+    "message": "siemka",
+    "nick_color": "#0000ff",
+    "text_color": "#ff0080",
+    "timestamp": 1729652941.8460326
   }
 ]
