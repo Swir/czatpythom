@@ -110,5 +110,12 @@
     "nick_color": "#00ff00",
     "text_color": "#0000ff",
     "timestamp": 1729693467.4231186
+  },
+  {
+    "username": "test2",
+    "message": "co ty odpierdalasz :P",
+    "nick_color": "#8000ff",
+    "text_color": "#ff0000",
+    "timestamp": 1729693514.6287305
   }
 ]
