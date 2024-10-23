@@ -19,5 +19,12 @@
     "nick_color": "#a0a0a0",
     "text_color": "#00FF00",
     "timestamp": 1729653035.5117402
+  },
+  {
+    "username": "sas",
+    "message": "wazzup",
+    "nick_color": "#0000ff",
+    "text_color": "#8000ff",
+    "timestamp": 1729653055.4327204
   }
 ]
