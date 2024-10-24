@@ -222,5 +222,12 @@
     "nick_color": "BLUE",
     "text_color": "CYAN",
     "timestamp": 1729745204.329081
+  },
+  {
+    "username": "123",
+    "message": "siemka",
+    "nick_color": "LIGHTBLUE_EX",
+    "text_color": "MAGENTA",
+    "timestamp": 1729745500.8617346
   }
 ]
