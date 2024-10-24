@@ -243,5 +243,12 @@
     "nick_color": "LIGHTBLUE_EX",
     "text_color": "MAGENTA",
     "timestamp": 1729745513.8165858
+  },
+  {
+    "username": "eew",
+    "message": "siemanko",
+    "nick_color": "GREEN",
+    "text_color": "BLUE",
+    "timestamp": 1729745576.4986176
   }
 ]
