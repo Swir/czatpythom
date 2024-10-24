@@ -257,5 +257,12 @@
     "nick_color": "GREEN",
     "text_color": "RED",
     "timestamp": 1729745596.7948267
+  },
+  {
+    "username": "Go\u015b\u0107_BU6MQ",
+    "message": "test",
+    "nick_color": "BLUE",
+    "text_color": "CYAN",
+    "timestamp": 1729745842.9258575
   }
 ]
