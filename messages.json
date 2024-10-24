@@ -5,5 +5,12 @@
     "nick_color": "BLUE",
     "text_color": "CYAN",
     "timestamp": 1729746920.7564836
+  },
+  {
+    "username": "3",
+    "message": "gAAAAABnGdg7qm0m-BQDw7Uxs5lAUbuamoO5dLNH6r7sLh67AltoIHGOvNTl-PUXOLqUp8YmypW_P0e5dI77r9wpIIuZZzYGaw==",
+    "nick_color": "RED",
+    "text_color": "YELLOW",
+    "timestamp": 1729747002.5371714
   }
 ]
