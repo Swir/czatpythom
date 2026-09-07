@@ -1,33 +1,47 @@
 <div align="center">
 
-# 💬 Console Chat / Czat Konsolowy
+# 💬 Console Chat
 
-**Colorful terminal chat backed by GitHub JSON storage**  
-**Kolorowy czat terminalowy oparty na plikach JSON w GitHubie**
+### GitHub-Backed Python Terminal Chat with Colors & JSON Storage
+
+**Python • GitHub API • Colorama • JSON • Console UI**
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
-![GitHub API](https://img.shields.io/badge/API-GitHub-181717?logo=github)
-![Terminal](https://img.shields.io/badge/UI-Console-2ea44f)
+![GitHub](https://img.shields.io/badge/Backend-GitHub%20API-181717?logo=github&logoColor=white)
+![JSON](https://img.shields.io/badge/Storage-JSON-111111)
+![Console](https://img.shields.io/badge/UI-Terminal-2ea44f)
 
 </div>
 
 ---
 
-## 🇵🇱 Polski
+## 🚀 About
 
-Projekt implementuje prosty czat konsolowy w Pythonie, który pobiera i zapisuje wiadomości w pliku `messages.json` przez GitHub Contents API. Interfejs korzysta z `colorama`, dzięki czemu użytkownik może wybrać kolor nicka i wiadomości.
+**Console Chat** is a lightweight Python terminal chat experiment that stores messages in GitHub-hosted JSON files through the GitHub Contents API. The interface uses Colorama for configurable nickname and message colors and can refresh conversation history automatically.
 
-### ✨ Funkcje
-- własny nick lub automatyczny nick gościa
-- 9 kolorów nicka i tekstu
-- zapis oraz odczyt historii z GitHuba
-- automatyczne odświeżanie wiadomości
-- komenda `/clean` do wyczyszczenia historii
-- komenda `quit` do zakończenia sesji
-- kilka wersji klienta, w tym `english.py` i wersja beta konsolowa
-- pliki JSON dla wiadomości, użytkowników i pokoi
+The repository includes multiple client variants, including an English version.
 
-### 🚀 Uruchomienie
+It is designed for users searching for a **Python console chat**, **GitHub API chat**, **JSON chat application**, **terminal messaging app** or a small experiment using GitHub as a simple remote message store.
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---|---|
+| 👤 Nicknames | Custom nickname or generated guest identity |
+| 🎨 Colors | Multiple nickname and text color choices |
+| ☁️ GitHub storage | Read/write message history through GitHub API |
+| 🔄 Auto refresh | Periodically update displayed messages |
+| 🧹 `/clean` | Clear chat history where configured/authorized |
+| 🚪 `quit` | End the local chat session |
+| 🌍 English client | `english.py` included |
+| 🗂️ JSON files | Messages, users and room-related data |
+
+---
+
+## 📦 Installation
+
 ```bash
 git clone https://github.com/Swir/czatpythom.git
 cd czatpythom
@@ -35,41 +49,30 @@ pip install requests colorama
 python english.py
 ```
 
-Przed uruchomieniem ustaw własny token GitHub w zmiennej `GITHUB_TOKEN` albo przenieś go do bezpiecznej konfiguracji środowiskowej.
+---
 
-### 🔐 Bezpieczeństwo
-Nie commituj prawdziwego GitHub Personal Access Token do publicznego repozytorium. Token powinien mieć wyłącznie minimalne uprawnienia wymagane do aktualizacji odpowiedniego pliku/repozytorium.
+## 🔐 GitHub Token Safety
+
+Use your own GitHub token and keep it outside public source code whenever possible. Environment variables or another local configuration mechanism are preferable to hard-coding credentials.
+
+Grant only the minimum repository permissions required for the specific JSON files used by the chat.
 
 ---
 
-## 🇬🇧 English
+## 🔍 Discoverability
 
-This project implements a lightweight Python console chat that reads and writes messages in `messages.json` through the GitHub Contents API. `colorama` provides customizable nickname and message colors.
-
-### ✨ Features
-- custom nickname or generated guest nickname
-- 9 nickname/text color choices
-- GitHub-backed message history
-- automatic message refresh
-- `/clean` command for clearing history
-- `quit` command for ending a session
-- multiple client variants including `english.py` and a beta console client
-- JSON files for messages, users and rooms
-
-### 🚀 Run
-```bash
-git clone https://github.com/Swir/czatpythom.git
-cd czatpythom
-pip install requests colorama
-python english.py
-```
-
-Set your own GitHub token before use, preferably through environment-based configuration rather than hard-coding a real credential.
-
-### 🔐 Security
-Never commit a real GitHub Personal Access Token to a public repository. Grant only the minimum permissions needed for the target repository/file.
+`python console chat` • `github api chat` • `terminal chat python` • `json chat app` • `colorama chat` • `github backed messaging` • `python terminal messenger` • `console chat source code`
 
 ---
 
-## 👤 Author / Autor
-Developed by **Swir**.
+## 👨‍💻 Author
+
+Developed by **Swir** — [@Swir](https://github.com/Swir)
+
+<div align="center">
+
+### 💬 A terminal chat experiment with GitHub as the message store
+
+⭐ **Star the repository if you like the idea!**
+
+</div>
