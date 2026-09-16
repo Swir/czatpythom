@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "czatpythom"
+version = "2.0.0"
+description = "Modern terminal chat client with local or GitHub-backed JSON storage"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Swir"}]
+dependencies = [
+  "requests>=2.32.3,<3",
+  "rich>=13.9.4,<15",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.5,<9",
+  "pytest-cov>=6.0,<7",
+  "pyinstaller>=6.12,<7",
+  "pillow>=11.1,<12",
+]
+
+[project.scripts]
+czatpythom = "czatpythom.app:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
