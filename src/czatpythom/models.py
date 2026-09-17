@@ -11,6 +11,12 @@ COLOR_NAMES = (
     "green", "blue", "red", "yellow", "magenta", "cyan", "bright_green",
     "bright_red", "bright_blue", "white",
 )
+LEGACY_COLOR_ALIASES = {
+    "lightgreen_ex": "bright_green",
+    "lightred_ex": "bright_red",
+    "lightblue_ex": "bright_blue",
+    "lightwhite_ex": "white",
+}
 
 
 def normalize_room(value: str) -> str:
@@ -30,6 +36,12 @@ def normalize_text(value: str) -> str:
     if not value:
         raise ValueError("message cannot be empty")
     return value[:2000]
+
+
+def normalize_color(value: object, fallback: str) -> str:
+    color = str(value or "").strip().lower()
+    color = LEGACY_COLOR_ALIASES.get(color, color)
+    return color if color in COLOR_NAMES else fallback
 
 
 @dataclass(frozen=True, slots=True)
@@ -57,8 +69,8 @@ class ChatMessage:
             text=normalize_text(text),
             timestamp=datetime.now(timezone.utc).isoformat(),
             room=normalize_room(room),
-            nick_color=nick_color if nick_color in COLOR_NAMES else "cyan",
-            text_color=text_color if text_color in COLOR_NAMES else "white",
+            nick_color=normalize_color(nick_color, "cyan"),
+            text_color=normalize_color(text_color, "white"),
         )
 
     @classmethod
@@ -76,8 +88,8 @@ class ChatMessage:
             text=text,
             timestamp=timestamp,
             room=normalize_room(str(raw.get("room", "lobby"))),
-            nick_color=str(raw.get("nick_color", "cyan")).lower(),
-            text_color=str(raw.get("text_color", "white")).lower(),
+            nick_color=normalize_color(raw.get("nick_color", "cyan"), "cyan"),
+            text_color=normalize_color(raw.get("text_color", "white"), "white"),
         )
 
     def to_dict(self) -> dict:
