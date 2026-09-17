@@ -24,3 +24,14 @@ def test_rooms_are_isolated(tmp_path):
     backend.append_message(ChatMessage.create("Bob", "b", room="two"))
     assert [item.text for item in backend.list_messages("one")] == ["a"]
     assert [item.text for item in backend.list_messages("two")] == ["b"]
+
+
+def test_clear_messages_only_clears_selected_room(tmp_path):
+    backend = LocalJsonBackend(tmp_path)
+    backend.append_message(ChatMessage.create("Alice", "a", room="one"))
+    backend.append_message(ChatMessage.create("Bob", "b", room="two"))
+
+    backend.clear_messages("one")
+
+    assert backend.list_messages("one") == []
+    assert [item.text for item in backend.list_messages("two")] == ["b"]
