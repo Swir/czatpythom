@@ -18,6 +18,7 @@ from .models import ChatMessage, normalize_room
 class MessageBackend(Protocol):
     def list_messages(self, room: str) -> list[ChatMessage]: ...
     def append_message(self, message: ChatMessage) -> None: ...
+    def clear_messages(self, room: str) -> None: ...
 
 
 class LocalJsonBackend:
@@ -52,9 +53,19 @@ class LocalJsonBackend:
             messages = self.list_messages(message.room)
             messages.append(message)
             payload = [item.to_dict() for item in messages[-self.max_messages :]]
-            temp = path.with_suffix(".tmp")
-            temp.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
-            temp.replace(path)
+            self._write_payload(path, payload)
+
+    def clear_messages(self, room: str) -> None:
+        with self._lock:
+            path = self._path(room)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            self._write_payload(path, [])
+
+    @staticmethod
+    def _write_payload(path: Path, payload: list[dict]) -> None:
+        temp = path.with_suffix(".tmp")
+        temp.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        temp.replace(path)
 
 
 class GitHubJsonBackend:
@@ -104,28 +115,55 @@ class GitHubJsonBackend:
         messages, _ = self._read(room)
         return messages
 
+    def _put_messages(self, room: str, messages: list[ChatMessage], sha: str | None, commit_message: str) -> requests.Response:
+        payload = [item.to_dict() for item in messages[-self.config.max_messages :]]
+        encoded = base64.b64encode(json.dumps(payload, ensure_ascii=False, indent=2).encode()).decode()
+        body: dict[str, object] = {
+            "message": commit_message,
+            "content": encoded,
+            "branch": self.config.branch,
+        }
+        if sha:
+            body["sha"] = sha
+        return self.session.put(self._url(room), headers=self._headers(), json=body, timeout=self.timeout)
+
     def append_message(self, message: ChatMessage) -> None:
         for attempt in range(5):
             messages, sha = self._read(message.room)
             if any(item.id == message.id for item in messages):
                 return
             messages.append(message)
-            payload = [item.to_dict() for item in messages[-self.config.max_messages :]]
-            encoded = base64.b64encode(json.dumps(payload, ensure_ascii=False, indent=2).encode()).decode()
-            body: dict[str, object] = {
-                "message": f"chat: append message in {message.room}",
-                "content": encoded,
-                "branch": self.config.branch,
-            }
-            if sha:
-                body["sha"] = sha
-            response = self.session.put(self._url(message.room), headers=self._headers(), json=body, timeout=self.timeout)
+            response = self._put_messages(
+                message.room,
+                messages,
+                sha,
+                f"chat: append message in {message.room}",
+            )
             if response.status_code in {409, 422} and attempt < 4:
                 time.sleep(0.3 + random.random() * 0.7)
                 continue
             response.raise_for_status()
             return
         raise RuntimeError("message update conflict after retries")
+
+    def clear_messages(self, room: str) -> None:
+        normalized = normalize_room(room)
+        for attempt in range(5):
+            _, sha = self._read(normalized)
+            if sha is None:
+                return
+            response = self._put_messages(
+                normalized,
+                [],
+                sha,
+                f"chat: clear history in {normalized}",
+            )
+            if response.status_code in {409, 422} and attempt < 4:
+                time.sleep(0.3 + random.random() * 0.7)
+                continue
+            response.raise_for_status()
+            return
+        raise RuntimeError("history clear conflict after retries")
 
 
 def build_backend(config: AppConfig) -> MessageBackend:
