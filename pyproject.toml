@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "czatpythom"
-version = "2.0.0"
+version = "2.1.0"
 description = "Modern terminal chat client with local or GitHub-backed JSON storage"
 readme = "README.md"
 requires-python = ">=3.10"

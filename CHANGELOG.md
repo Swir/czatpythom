@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.1.0 - 2026-09-17
+
+### Restored after regression audit
+- First-run nickname setup with generated guest fallback, matching the classic client behavior without blocking headless runs.
+- Interactive nickname and message color selection on first run.
+- Runtime `/nickcolor COLOR` and `/textcolor COLOR` commands so users can actually change both colors again.
+- Legacy `/clean` room-history clearing with an explicit destructive-action confirmation. `/clear` remains local-screen-only.
+- Full migration of legacy Colorama names such as `LIGHTGREEN_EX`, `LIGHTRED_EX` and `LIGHTBLUE_EX` to Rich equivalents.
+
+### Improved
+- `/status` now reports nickname and message colors.
+- Local history clearing is atomic and isolated to the selected room.
+- GitHub-backed room clearing uses the same conflict-retry strategy as message appends.
+- Regression tests cover room clearing and legacy color migration.
+- README now displays the project icon and documents the audited classic-to-modern feature mapping.
+- Windows release packaging derives its version from the package instead of hard-coding artifact/tag names.
+
 ## 2.0.0 - 2026-09-17
 
 ### Added
@@ -23,7 +40,6 @@
 
 ### Removed
 - Hard-coded placeholder GitHub tokens and repository URLs.
-- Destructive remote `/clean` behavior. `/clear` now clears only the local terminal.
 - Duplicate Polish/English client implementations.
 - Repository-tracked runtime message/user/room state.
 - Legacy MP3/WAV notification assets; terminal-native notifications are used instead.

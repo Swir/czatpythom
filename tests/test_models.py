@@ -27,4 +27,20 @@ def test_legacy_message_is_migrated():
     )
     assert message.text == "legacy"
     assert message.room == "lobby"
+    assert message.nick_color == "green"
+    assert message.text_color == "white"
     assert "+00:00" in message.timestamp
+
+
+def test_legacy_light_colors_map_to_rich_equivalents():
+    message = ChatMessage.from_dict(
+        {
+            "username": "Guest",
+            "message": "legacy colors",
+            "timestamp": 1_700_000_000.0,
+            "nick_color": "LIGHTGREEN_EX",
+            "text_color": "LIGHTBLUE_EX",
+        }
+    )
+    assert message.nick_color == "bright_green"
+    assert message.text_color == "bright_blue"
