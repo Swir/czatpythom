@@ -5,7 +5,7 @@ import threading
 import time
 
 from .backends import MessageBackend
-from .models import ChatMessage, normalize_room, normalize_username
+from .models import ChatMessage, normalize_color, normalize_room, normalize_username
 
 
 class ChatClient:
@@ -20,8 +20,8 @@ class ChatClient:
         self.backend = backend
         self.username = normalize_username(username)
         self.room = normalize_room(room)
-        self.nick_color = nick_color
-        self.text_color = text_color
+        self.nick_color = normalize_color(nick_color, "cyan")
+        self.text_color = normalize_color(text_color, "white")
         self._seen: set[str] = set()
         self._lock = threading.Lock()
 
@@ -58,6 +58,19 @@ class ChatClient:
 
     def change_username(self, username: str) -> None:
         self.username = normalize_username(username)
+
+    def change_color(self, target: str, color: str) -> str:
+        target = target.strip().lower()
+        if target not in {"nick", "text"}:
+            raise ValueError("target must be nick or text")
+        normalized = normalize_color(color, "")
+        if not normalized:
+            raise ValueError("unsupported color")
+        if target == "nick":
+            self.nick_color = normalized
+        else:
+            self.text_color = normalized
+        return normalized
 
     def receiver_loop(
         self,
