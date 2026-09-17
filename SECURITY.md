@@ -22,7 +22,14 @@ The local backend stores room JSON under the current user's application-data/con
 
 ## Message deletion
 
-Version 2 intentionally does not include the legacy remote `/clean` command. The `/clear` command only clears the local terminal. This avoids accidental destructive history removal.
+CzatPythom 2.1 restores the legacy `/clean` capability because it was part of the original client, but it is no longer a blind one-key destructive action:
+
+- `/clear` only clears the local terminal screen.
+- `/clean` clears messages only in the currently selected room.
+- `/clean` always asks for explicit confirmation first.
+- On the GitHub backend, the clear operation is limited to the configured room JSON path in the configured repository and uses conflict retries.
+
+Treat `/clean` as irreversible history deletion and keep repository backups if chat history is important.
 
 ## Reporting
 
