@@ -40,6 +40,10 @@ def guest_name(language: str) -> str:
     return f"{prefix}_{suffix}"
 
 
+def is_quit_input(value: str) -> bool:
+    return value.strip().lower() in {"quit", "/quit", "/exit"}
+
+
 def print_message(message: ChatMessage, mention_target: str = "") -> None:
     nick_style = RICH_COLORS.get(message.nick_color, "cyan")
     text_style = RICH_COLORS.get(message.text_color, "white")
@@ -197,12 +201,12 @@ def main(argv: list[str] | None = None) -> int:
             if not raw:
                 console.print(f"[yellow]{tr(language, 'empty')}[/]")
                 continue
+            if is_quit_input(raw):
+                break
             if raw.startswith("/"):
                 command, _, value = raw.partition(" ")
                 command = command.lower()
                 value = value.strip()
-                if command in {"/quit", "/exit"}:
-                    break
                 if command == "/help":
                     console.print(tr(language, "help"))
                     continue
