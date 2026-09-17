@@ -12,6 +12,22 @@ COLOR_NAMES = (
     "bright_red", "bright_blue", "white",
 )
 
+# The original Colorama builds stored uppercase names such as LIGHTGREEN_EX.
+# Keep those histories visually compatible with the Rich-based v2 application.
+LEGACY_COLOR_ALIASES = {
+    "lightgreen_ex": "bright_green",
+    "lightred_ex": "bright_red",
+    "lightblue_ex": "bright_blue",
+    "lightwhite_ex": "white",
+    "reset": "white",
+}
+
+
+def normalize_color(value: str, default: str = "white") -> str:
+    color = str(value or "").strip().lower().replace("-", "_").replace(" ", "_")
+    color = LEGACY_COLOR_ALIASES.get(color, color)
+    return color if color in COLOR_NAMES else default
+
 
 def normalize_room(value: str) -> str:
     value = ROOM_RE.sub("-", value.strip()).strip("-_ ").lower()
@@ -57,8 +73,8 @@ class ChatMessage:
             text=normalize_text(text),
             timestamp=datetime.now(timezone.utc).isoformat(),
             room=normalize_room(room),
-            nick_color=nick_color if nick_color in COLOR_NAMES else "cyan",
-            text_color=text_color if text_color in COLOR_NAMES else "white",
+            nick_color=normalize_color(nick_color, "cyan"),
+            text_color=normalize_color(text_color, "white"),
         )
 
     @classmethod
@@ -76,8 +92,8 @@ class ChatMessage:
             text=text,
             timestamp=timestamp,
             room=normalize_room(str(raw.get("room", "lobby"))),
-            nick_color=str(raw.get("nick_color", "cyan")).lower(),
-            text_color=str(raw.get("text_color", "white")).lower(),
+            nick_color=normalize_color(str(raw.get("nick_color", "cyan")), "cyan"),
+            text_color=normalize_color(str(raw.get("text_color", "white")), "white"),
         )
 
     def to_dict(self) -> dict:
