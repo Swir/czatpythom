@@ -1,8 +1,10 @@
 <div align="center">
 
-# 💬 CzatPythom 2
+<img src="assets/app_icon.svg" alt="CzatPythom icon" width="128" height="128">
 
-### Modern PL/EN terminal chat with safe local or GitHub-backed storage
+# 💬 CzatPythom 2.1
+
+### Modern PL/EN terminal chat with restored classic features and safe local or GitHub-backed storage
 
 **Python 3.10–3.14 • Rich • Requests • JSON • Windows EXE**
 
@@ -15,22 +17,32 @@
 
 ---
 
-## What changed in v2
+## Regression audit result
 
-CzatPythom 2 replaces the old duplicated Polish/English scripts and repository-tracked runtime JSON files with one maintainable application.
+CzatPythom 2.1 was compared against the original Polish and English console clients. The modern architecture is kept, while useful behavior that disappeared in v2.0 has been restored.
 
-- one multilingual codebase with automatic Polish/English selection
+### Restored from the classic client
+
+- custom nickname on first run or an automatically generated `Guest_XXXXX` / `Gość_XXXXX`
+- separate nickname and message colors
+- classic Colorama colors migrated correctly, including `LIGHTGREEN_EX`, `LIGHTRED_EX` and `LIGHTBLUE_EX`
+- background polling and timestamped framed messages
+- `/clean` room-history clearing, now protected by an explicit confirmation
+- `quit`/`/quit` session ending behavior
+
+### Modern features retained
+
+- one multilingual PL/EN codebase with system-language detection
 - modular `src/czatpythom` architecture
-- modern dark-blue Rich terminal UI
+- dark-blue Rich terminal UI
 - zero-setup **local backend** by default
 - optional **GitHub repository backend** for shared rooms
-- room switching, nickname changes, colors, mention highlighting and live polling
-- legacy message compatibility
+- rooms, nickname changes, mention highlighting with terminal bell and live polling
 - per-user settings outside the repository/application directory
-- no hard-coded tokens
-- no destructive remote `/clean`
-- tests + Python 3.10–3.14 CI
-- custom app icon + Windows EXE + portable ZIP + SHA256 release artifacts
+- no hard-coded GitHub token
+- optimistic GitHub update retries
+- Python 3.10–3.14 CI
+- custom application icon, Windows EXE, portable ZIP and SHA256 files
 
 ---
 
@@ -38,7 +50,7 @@ CzatPythom 2 replaces the old duplicated Polish/English scripts and repository-t
 
 ### Windows Release
 
-Download the newest `CzatPythom.exe` or portable ZIP from **GitHub Releases**. The release also includes SHA256 checksum files.
+Download the newest `CzatPythom.exe` or portable ZIP from **GitHub Releases**. SHA256 checksum files are published next to both downloads.
 
 ### Python
 
@@ -49,7 +61,7 @@ python -m pip install -e .
 python -m czatpythom
 ```
 
-The default mode is local and needs no account or token.
+On the first interactive run you can choose your nickname plus separate nickname/message colors. Press Enter at the nickname prompt to keep the generated guest identity.
 
 ---
 
@@ -68,7 +80,7 @@ CzatPythom.exe --room lobby
 
 Use a fine-grained token restricted to that single repository. The token is read from the environment only and is never saved in `config.json`.
 
-> GitHub-backed chat is a small-project/demo backend, not a replacement for a dedicated realtime messaging service. Repository API rate limits still apply.
+> GitHub-backed chat is intended for a small/private project or demo. Repository API limits still apply.
 
 ---
 
@@ -79,12 +91,17 @@ Use a fine-grained token restricted to that single repository. The token is read
 | `/help` | Show command help |
 | `/room NAME` | Switch rooms |
 | `/nick NAME` | Change nickname |
-| `/colors` | Show supported color names |
-| `/status` | Show backend/room/refresh state |
-| `/clear` | Clear the local terminal only |
-| `/quit` | End the session |
+| `/nickcolor COLOR` | Change nickname color |
+| `/textcolor COLOR` | Change message color |
+| `/colors` | Show supported colors |
+| `/status` | Show backend, room, refresh interval and active colors |
+| `/clear` | Clear only the local terminal screen |
+| `/clean` | Clear the current room history after confirmation |
+| `/quit` or `quit` | End the session |
 
-The legacy remote history-deletion command was intentionally removed to prevent accidental destructive writes.
+Supported colors: `green`, `blue`, `red`, `yellow`, `magenta`, `cyan`, `bright_green`, `bright_red`, `bright_blue`, `white`.
+
+`/clean` affects only the currently selected room. On the GitHub backend it writes an empty room history to the configured repository and requires confirmation before the destructive action.
 
 ---
 
@@ -108,14 +125,15 @@ Refresh intervals are bounded to 2–60 seconds.
 
 ```text
 src/czatpythom/
-  app.py          # Rich terminal application
-  backends.py     # local + GitHub storage
+  app.py          # Rich terminal application and commands
+  backends.py     # local + GitHub storage, append/clear operations
   client.py       # polling and client state
   config.py       # per-user configuration
   i18n.py         # PL/EN translations
-  models.py       # validated message model
+  models.py       # validated message model + legacy migration
 assets/
-  app_icon.svg
+  app_icon.svg    # source icon displayed in this README
+  app_icon.ico    # generated during Windows builds
 tools/
   build_icon.py
 tests/
@@ -126,7 +144,7 @@ Runtime data is not committed to the source repository.
 
 ---
 
-## Development
+## Development and regression tests
 
 ```bash
 python -m pip install -e ".[dev]"
@@ -134,7 +152,7 @@ python -m pytest
 python -m czatpythom --version
 ```
 
-CI tests Python **3.10, 3.11, 3.12, 3.13 and 3.14**.
+CI tests Python **3.10, 3.11, 3.12, 3.13 and 3.14**. Regression coverage includes legacy message/color migration and room-scoped history clearing.
 
 ---
 
@@ -143,22 +161,23 @@ CI tests Python **3.10, 3.11, 3.12, 3.13 and 3.14**.
 - Never commit GitHub tokens.
 - Use a private repository for non-public GitHub-backed chat history.
 - Do not exchange passwords, API keys or recovery codes through repository-backed rooms.
-- CzatPythom does not persist the GitHub token.
-- New writes use optimistic retries to reduce concurrent-update conflicts.
+- CzatPythom never persists the GitHub token.
+- `/clean` requires interactive confirmation and only clears the active room.
+- New writes and history clears use optimistic retries to reduce repository update conflicts.
 - See [`SECURITY.md`](SECURITY.md) for details.
 
 ---
 
 ## Release artifacts
 
-A release build produces:
+Each Windows release produces:
 
 - `CzatPythom.exe`
 - `CzatPythom.exe.sha256`
-- `CzatPythom-v2.0.0-Windows-x64.zip`
-- `CzatPythom-v2.0.0-Windows-x64.zip.sha256`
+- `CzatPythom-vX.Y.Z-Windows-x64.zip`
+- `CzatPythom-vX.Y.Z-Windows-x64.zip.sha256`
 
-The EXE is smoke-tested with `--version` before publication.
+The EXE is smoke-tested with `--version` before publication and release filenames are generated from the application version automatically.
 
 ---
 
