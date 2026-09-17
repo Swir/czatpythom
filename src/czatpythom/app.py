@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 import random
 import string
 import sys
@@ -9,8 +8,7 @@ import threading
 
 from rich.console import Console
 from rich.panel import Panel
-from rich.prompt import Prompt
-from rich.table import Table
+from rich.prompt import Confirm, Prompt
 from rich.text import Text
 
 from . import __version__
@@ -97,12 +95,51 @@ def apply_args(config: AppConfig, args: argparse.Namespace) -> AppConfig:
     return config
 
 
+def first_run_identity(config: AppConfig, language: str, args: argparse.Namespace) -> None:
+    """Restore the legacy nickname/color setup without blocking headless runs."""
+    if config.username or args.username or not sys.stdin.isatty():
+        if not config.username:
+            config.username = guest_name(language)
+        return
+
+    default_guest = guest_name(language)
+    chosen = Prompt.ask(tr(language, "login_prompt"), default=default_guest).strip()
+    config.username = normalize_username(chosen or default_guest)
+    config.nick_color = Prompt.ask(
+        tr(language, "nick_color_prompt"),
+        choices=list(COLOR_NAMES),
+        default=config.nick_color if config.nick_color in COLOR_NAMES else "cyan",
+    )
+    config.text_color = Prompt.ask(
+        tr(language, "text_color_prompt"),
+        choices=list(COLOR_NAMES),
+        default=config.text_color if config.text_color in COLOR_NAMES else "white",
+    )
+
+
+def _set_color(client: ChatClient, config: AppConfig, language: str, target: str, value: str) -> bool:
+    color = value.strip().lower()
+    if color not in COLOR_NAMES:
+        console.print(f"[yellow]{tr(language, 'invalid_color', colors=', '.join(COLOR_NAMES))}[/]")
+        return False
+    if target == "nick":
+        client.nick_color = color
+        config.nick_color = color
+        label = tr(language, "nick_color_name")
+    else:
+        client.text_color = color
+        config.text_color = color
+        label = tr(language, "text_color_name")
+    config.save()
+    console.print(f"[green]{tr(language, 'color_changed', target=label, color=color)}[/]")
+    return True
+
+
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     config = apply_args(AppConfig.load(), args)
     language = config.resolved_language
-    if not config.username:
-        config.username = guest_name(language)
+    first_run_identity(config, language, args)
 
     try:
         config.validate()
@@ -174,8 +211,28 @@ def main(argv: list[str] | None = None) -> int:
                     render_banner(language, config)
                     console.print(f"[dim]{tr(language, 'cleared')}[/]")
                     continue
+                if command == "/clean":
+                    if Confirm.ask(tr(language, "clean_confirm", room=client.room), default=False):
+                        try:
+                            backend.clear_messages(client.room)
+                            console.print(f"[green]{tr(language, 'history_cleared', room=client.room)}[/]")
+                        except Exception as exc:
+                            console.print(f"[bold red]{tr(language, 'clean_error', error=exc)}[/]")
+                    else:
+                        console.print(f"[dim]{tr(language, 'cancelled')}[/]")
+                    continue
                 if command == "/status":
-                    console.print(tr(language, "status", backend=config.backend, room=client.room, poll=config.poll_seconds))
+                    console.print(
+                        tr(
+                            language,
+                            "status",
+                            backend=config.backend,
+                            room=client.room,
+                            poll=config.poll_seconds,
+                            nick_color=client.nick_color,
+                            text_color=client.text_color,
+                        )
+                    )
                     continue
                 if command == "/room" and value:
                     client.change_room(value)
@@ -191,6 +248,12 @@ def main(argv: list[str] | None = None) -> int:
                     config.username = client.username
                     config.save()
                     console.print(f"[green]{tr(language, 'nick_changed', username=client.username)}[/]")
+                    continue
+                if command == "/nickcolor" and value:
+                    _set_color(client, config, language, "nick", value)
+                    continue
+                if command == "/textcolor" and value:
+                    _set_color(client, config, language, "text", value)
                     continue
                 if command == "/colors":
                     console.print(tr(language, "colors"))
