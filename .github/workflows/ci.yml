@@ -29,3 +29,5 @@ jobs:
         run: python -m pytest
       - name: CLI smoke test
         run: python -m czatpythom --version
+      - name: README progress presentation check
+        run: python tools/readme_progress.py --check

@@ -1,58 +1,70 @@
+<!-- SWIR-README-STANDARD:v2 -->
+
 <div align="center">
 
-<img src="assets/app_icon.svg" alt="CzatPythom icon" width="128" height="128">
+<img width="100%" src="assets/readme/hero.svg" alt="CzatPythom — PL/EN terminal chat with local or GitHub-backed rooms" />
 
-# 💬 CzatPythom 2.1
+<br>
 
-### Modern PL/EN terminal chat with restored classic features and safe local or GitHub-backed storage
+![Python](https://img.shields.io/badge/Python-3.10--3.14-02050A?style=for-the-badge&logo=python&logoColor=62E5FF)
+![UI](https://img.shields.io/badge/UI-Rich%20Terminal-02050A?style=for-the-badge&logo=windowsterminal&logoColor=62E5FF)
+![Release](https://img.shields.io/badge/Release-v2.1.0-02050A?style=for-the-badge&logo=github&logoColor=62E5FF)
+![Windows](https://img.shields.io/badge/Windows-EXE-02050A?style=for-the-badge&logo=windows11&logoColor=62E5FF)
 
-**Python 3.10–3.14 • Rich • Requests • JSON • Windows EXE**
+[![Author](https://img.shields.io/badge/Author-Swir-0088FF?style=flat-square&logo=github)](https://github.com/Swir)
+[![Stars](https://img.shields.io/github/stars/Swir/czatpythom?style=flat-square&color=0088FF)](https://github.com/Swir/czatpythom/stargazers)
 
-![Python](https://img.shields.io/badge/Python-3.10--3.14-3776AB?logo=python&logoColor=white)
-![UI](https://img.shields.io/badge/UI-Rich%20Terminal-1596D2)
-![Storage](https://img.shields.io/badge/Storage-Local%20%7C%20GitHub-181717?logo=github)
-![Release](https://img.shields.io/badge/Windows-EXE-0078D6?logo=windows)
+<br>
+
+[**Highlights**](#-highlights) · [**Quick Start**](#-quick-start) · [**Shared Rooms**](#-shared-github-rooms) · [**Status**](STATUS.md) · [**Releases**](#-releases)
 
 </div>
 
----
+<img width="100%" src="https://raw.githubusercontent.com/Swir/Swir/main/assets/power-divider-v4.svg" alt="SWIR electric divider" />
 
-## Regression audit result
+## 📍 Project Status
 
-CzatPythom 2.1 was compared against the original Polish and English console clients. The modern architecture is kept, while useful behavior that disappeared in v2.0 has been restored.
+<img width="100%" src="assets/readme/progress-card.svg" alt="CzatPythom product progress — N/A because no canonical measurable product roadmap exists" />
 
-### Restored from the classic client
+| Item | Status |
+|---|---|
+| Current state | Published utility — v2.1.0 |
+| Runtime | Python 3.10+; CI covers Python 3.10–3.14 |
+| UI | Rich terminal |
+| Storage | Local JSON by default; optional GitHub repository backend |
+| Latest public release | [v2.1.0](https://github.com/Swir/czatpythom/releases/tag/v2.1.0) |
+| Product completion | **N/A** — no canonical measurable roadmap/denominator exists |
+| Detailed status | [STATUS.md](STATUS.md) |
 
-- custom nickname on first run or an automatically generated `Guest_XXXXX` / `Gość_XXXXX`
-- separate nickname and message colors
-- classic Colorama colors migrated correctly, including `LIGHTGREEN_EX`, `LIGHTRED_EX` and `LIGHTBLUE_EX`
-- background polling and timestamped framed messages
-- `/clean` room-history clearing, now protected by an explicit confirmation
-- `quit`/`/quit` session ending behavior
+The release version, test count, commit count and documentation completeness are not treated as a product-completion percentage.
 
-### Modern features retained
+## 🚀 Overview
 
-- one multilingual PL/EN codebase with system-language detection
-- modular `src/czatpythom` architecture
-- dark-blue Rich terminal UI
-- zero-setup **local backend** by default
-- optional **GitHub repository backend** for shared rooms
-- rooms, nickname changes, mention highlighting with terminal bell and live polling
-- per-user settings outside the repository/application directory
-- no hard-coded GitHub token
-- optimistic GitHub update retries
-- Python 3.10–3.14 CI
-- custom application icon, Windows EXE, portable ZIP and SHA256 files
+**CzatPythom** is a multilingual PL/EN terminal chat client built in Python. It combines a zero-setup local JSON backend with an optional GitHub-repository backend for small shared rooms, while keeping configuration and credentials outside the source tree.
 
----
+Version 2.1.0 restored useful classic-client behavior—nickname/color setup, legacy color migration, confirmed room-history clearing and plain `quit` support—without abandoning the modern modular architecture.
 
-## Quick start
+## ✨ Highlights
 
-### Windows Release
+| Feature | What it does |
+|---|---|
+| 💬 Local rooms | Starts without an external service by storing room data locally |
+| ☁️ Optional GitHub backend | Stores room JSON in a repository selected by the user |
+| 🌍 PL / EN | Detects system language and keeps one multilingual codebase |
+| 🎨 Nick/message colors | Separate nickname and message colors, including migrated legacy Colorama values |
+| 🔔 Mentions | Highlights mentions and can emit a terminal bell |
+| 🧹 Safe `/clean` | Clears only the active room after explicit confirmation |
+| 🔄 Live polling | Background refresh with bounded 2–60 second intervals |
+| 🛡️ Token handling | Reads the GitHub token from the environment and does not persist it in `config.json` |
+| 📦 Windows packaging | Public v2.1.0 provides EXE, portable ZIP and SHA256 files |
 
-Download the newest `CzatPythom.exe` or portable ZIP from **GitHub Releases**. SHA256 checksum files are published next to both downloads.
+## ⚙️ Quick Start
 
-### Python
+### Recommended — Windows release
+
+Download the current **v2.1.0** assets from [GitHub Releases](https://github.com/Swir/czatpythom/releases/tag/v2.1.0). The release workflow publishes a standalone EXE, a portable Windows ZIP and SHA256 checksum files.
+
+### From source
 
 ```bash
 git clone https://github.com/Swir/czatpythom.git
@@ -61,15 +73,18 @@ python -m pip install -e .
 python -m czatpythom
 ```
 
-On the first interactive run you can choose your nickname plus separate nickname/message colors. Press Enter at the nickname prompt to keep the generated guest identity.
+On the first interactive run, choose a nickname and separate nickname/message colors. Press Enter at the nickname prompt to keep the generated guest identity.
 
----
+## 📋 Requirements / Compatibility
 
-## Shared GitHub rooms
+- Python **3.10+** from source; repository CI covers 3.10, 3.11, 3.12, 3.13 and 3.14.
+- `requests` and `rich` are runtime dependencies declared by `pyproject.toml`.
+- The packaged EXE is intended for Windows.
+- GitHub-backed rooms require a repository you control and a fine-grained token with only the required repository access.
 
-GitHub mode stores each room as a JSON file in a repository you choose. For private conversations, use a **private repository**.
+## ☁️ Shared GitHub Rooms
 
-PowerShell example:
+GitHub mode stores each room as a JSON file in a repository you choose. For non-public conversation history, use a **private repository**.
 
 ```powershell
 $env:CZATPYTHOM_BACKEND = "github"
@@ -78,13 +93,11 @@ $env:CZATPYTHOM_GITHUB_TOKEN = "github_pat_..."
 CzatPythom.exe --room lobby
 ```
 
-Use a fine-grained token restricted to that single repository. The token is read from the environment only and is never saved in `config.json`.
+Use a fine-grained token restricted to the selected repository. The token is read from the environment only and is never written to `config.json`.
 
-> GitHub-backed chat is intended for a small/private project or demo. Repository API limits still apply.
+> GitHub-backed chat is intended for a small/private project or demo. GitHub API limits and repository visibility still apply.
 
----
-
-## Commands
+## 🎮 Commands
 
 | Command | Action |
 |---|---|
@@ -96,97 +109,90 @@ Use a fine-grained token restricted to that single repository. The token is read
 | `/colors` | Show supported colors |
 | `/status` | Show backend, room, refresh interval and active colors |
 | `/clear` | Clear only the local terminal screen |
-| `/clean` | Clear the current room history after confirmation |
+| `/clean` | Clear the active room history after confirmation |
 | `/quit` or `quit` | End the session |
 
 Supported colors: `green`, `blue`, `red`, `yellow`, `magenta`, `cyan`, `bright_green`, `bright_red`, `bright_blue`, `white`.
 
-`/clean` affects only the currently selected room. On the GitHub backend it writes an empty room history to the configured repository and requires confirmation before the destructive action.
+## 🧠 Technology / Architecture
 
----
-
-## CLI options
-
-```text
---version
---backend local|github
---repository OWNER/REPO
---room ROOM
---language auto|pl|en
---username NAME
---poll SECONDS
-```
-
-Refresh intervals are bounded to 2–60 seconds.
-
----
-
-## Project structure
+| Layer | Technology / role |
+|---|---|
+| UI | Rich terminal application |
+| Core | Python package under `src/czatpythom` |
+| Local storage | JSON room files |
+| Shared storage | GitHub repository API through `requests` |
+| Packaging | PyInstaller in the release workflow |
+| Tests | Pytest + CLI smoke test across Python 3.10–3.14 |
 
 ```text
 src/czatpythom/
-  app.py          # Rich terminal application and commands
+  app.py          # terminal application and commands
   backends.py     # local + GitHub storage, append/clear operations
   client.py       # polling and client state
   config.py       # per-user configuration
   i18n.py         # PL/EN translations
   models.py       # validated message model + legacy migration
 assets/
-  app_icon.svg    # source icon displayed in this README
-  app_icon.ico    # generated during Windows builds
+  app_icon.svg    # source application icon
+  app_icon.ico    # generated/packaged Windows icon
 tools/
   build_icon.py
+  readme_progress.py
 tests/
 .github/workflows/
 ```
 
 Runtime data is not committed to the source repository.
 
----
-
-## Development and regression tests
+## 🧪 Development & Verification
 
 ```bash
 python -m pip install -e ".[dev]"
 python -m pytest
 python -m czatpythom --version
+python tools/readme_progress.py --check
 ```
 
-CI tests Python **3.10, 3.11, 3.12, 3.13 and 3.14**. Regression coverage includes legacy message/color migration and room-scoped history clearing.
+The README progress check verifies the committed SVGs, required embeddings and absence of retired character-based progress meters in maintained status documentation.
 
----
+## 📦 Releases
 
-## Privacy & security
+Latest verified public release: **[CzatPythom v2.1.0](https://github.com/Swir/czatpythom/releases/tag/v2.1.0)**.
 
-- Never commit GitHub tokens.
-- Use a private repository for non-public GitHub-backed chat history.
-- Do not exchange passwords, API keys or recovery codes through repository-backed rooms.
-- CzatPythom never persists the GitHub token.
-- `/clean` requires interactive confirmation and only clears the active room.
-- New writes and history clears use optimistic retries to reduce repository update conflicts.
-- See [`SECURITY.md`](SECURITY.md) for details.
-
----
-
-## Release artifacts
-
-Each Windows release produces:
+Release artifacts include:
 
 - `CzatPythom.exe`
 - `CzatPythom.exe.sha256`
-- `CzatPythom-vX.Y.Z-Windows-x64.zip`
-- `CzatPythom-vX.Y.Z-Windows-x64.zip.sha256`
+- `CzatPythom-v2.1.0-Windows-x64.zip`
+- `CzatPythom-v2.1.0-Windows-x64.zip.sha256`
 
-The EXE is smoke-tested with `--version` before publication and release filenames are generated from the application version automatically.
+Historical draft releases may still be visible through GitHub's API, but they are not presented here as current public downloads.
 
----
+## 🔐 Privacy & Security
 
-## Author
+- Never commit GitHub tokens.
+- Use a private repository for non-public GitHub-backed room history.
+- Do not exchange passwords, API keys or recovery codes through repository-backed rooms.
+- CzatPythom does not persist the GitHub token.
+- `/clean` requires interactive confirmation and only clears the active room.
+- New writes and history clears use optimistic retries to reduce repository update conflicts.
+- See [`SECURITY.md`](SECURITY.md) for the project's security guidance.
 
-Developed by **Swir** — [github.com/Swir](https://github.com/Swir)
+## 🔎 Search Keywords
+
+`python terminal chat` • `rich terminal chat` • `python chat client` • `local json chat` • `github backed chat` • `private repository chat` • `windows terminal chat` • `python windows exe` • `multilingual chat client` • `polish english chat` • `rich python ui` • `github api python` • `terminal room chat` • `portable chat utility` • `czatpythom`
+
+<img width="100%" src="https://raw.githubusercontent.com/Swir/Swir/main/assets/power-divider-v4.svg" alt="SWIR electric divider" />
 
 <div align="center">
 
-### by Swir ⚡
+<img src="assets/app_icon.svg" alt="CzatPythom application icon" width="86" height="86" />
+
+### `CONNECT • CHAT • CONTROL`
+
+⭐ **If CzatPythom is useful, consider leaving a star.**
+
+[**← SWIR profile**](https://github.com/Swir) · [**All projects →**](https://github.com/Swir?tab=repositories)
 
 </div>
