@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+<title id="title">CzatPythom — terminal chat client</title>
+<desc id="desc">Dark electric-cyan SWIR project banner for CzatPythom, a PL/EN terminal chat with local or GitHub-backed storage.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#02050A"/><stop offset="0.55" stop-color="#06101A"/><stop offset="1" stop-color="#02050A"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0088FF"/><stop offset="0.45" stop-color="#62E5FF"/><stop offset="1" stop-color="#0088FF"/></linearGradient>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#62E5FF" stroke-opacity="0.05"/></pattern>
+</defs>
+<rect width="1200" height="320" rx="26" fill="url(#bg)"/><rect x="1" y="1" width="1198" height="318" rx="25" fill="none" stroke="#62E5FF" stroke-opacity="0.25"/><rect width="1200" height="320" rx="26" fill="url(#grid)"/>
+<path d="M0 250 C180 210 250 300 430 258 S720 214 885 248 S1070 282 1200 232" fill="none" stroke="url(#cyan)" stroke-opacity="0.24" stroke-width="2"/>
+<g transform="translate(72 74)"><rect width="150" height="150" rx="30" fill="#07111C" stroke="#62E5FF" stroke-opacity="0.5"/><path d="M35 48h80a18 18 0 0 1 18 18v42a18 18 0 0 1-18 18H76l-25 18 7-18H35a18 18 0 0 1-18-18V66a18 18 0 0 1 18-18Z" fill="none" stroke="#62E5FF" stroke-width="6" filter="url(#glow)"/><path d="M47 83h55M47 101h37" stroke="#0088FF" stroke-width="5" stroke-linecap="round"/></g>
+<text x="270" y="70" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4" fill="#62E5FF">SWIR PROJECT</text>
+<text x="270" y="145" font-family="Segoe UI,Arial,sans-serif" font-size="58" font-weight="800" fill="#F4FAFF">CZATPYTHOM</text>
+<text x="272" y="190" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="500" fill="#B8D2E0">PL/EN terminal chat with local or GitHub-backed rooms</text>
+<text x="272" y="232" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="650" letter-spacing="1.5" fill="#62E5FF">PYTHON  •  RICH TERMINAL  •  WINDOWS / CROSS-PLATFORM SOURCE</text>
+</svg>
