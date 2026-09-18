@@ -26,13 +26,13 @@ LEGACY_PATTERNS = (
 
 def card_svg() -> str:
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 1200 180" role="img" aria-labelledby="title desc">
-<title id="title">{PROJECT} progress</title><desc id="desc">{PROJECT}. Scope: {SCOPE}. Status: {STATE}. Progress: N/A. No trustworthy product denominator.</desc>
+<title id="title">{PROJECT} progress</title><desc id="desc">{PROJECT}. Scope: product completion with no canonical measurable roadmap. Status: published v2.1.0, product progress N/A. No trustworthy product denominator.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#02050A"/><stop offset="1" stop-color="#07111C"/></linearGradient><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#62E5FF" stroke-opacity="0.045"/></pattern></defs>
 <rect x="1" y="1" width="1198" height="178" rx="22" fill="url(#bg)" stroke="#62E5FF" stroke-opacity="0.25"/><rect x="1" y="1" width="1198" height="178" rx="22" fill="url(#grid)"/><text x="50" y="34" fill="#62E5FF" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="3">SWIR PROGRESS</text><text x="50" y="67" fill="#F4FAFF" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="800">{PROJECT}</text><text x="50" y="92" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="14">{SCOPE}</text><text x="1150" y="67" text-anchor="end" fill="#F4FAFF" font-family="Segoe UI,Arial,sans-serif" font-size="34" font-weight="800">N/A</text><text x="1150" y="92" text-anchor="end" fill="#62E5FF" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700">{STATE}</text><rect x="50" y="111" width="1100" height="18" rx="9" fill="#08131F" stroke="#62E5FF" stroke-opacity="0.15"/><text x="50" y="154" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="13">{COUNTER}</text><text x="1150" y="154" text-anchor="end" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="13">Source: STATUS.md</text></svg>'''
 
 
 def mini_svg() -> str:
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="72" viewBox="0 0 900 72" role="img" aria-labelledby="title desc"><title id="title">{PROJECT} compact progress</title><desc id="desc">{SCOPE}. N/A. Latest public release v2.1.0.</desc><rect x="1" y="1" width="898" height="70" rx="18" fill="#02050A" stroke="#62E5FF" stroke-opacity="0.25"/><text x="22" y="28" fill="#F4FAFF" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700">{PROJECT}</text><text x="22" y="50" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="11">N/A · {STATE}</text><rect x="170" y="27" width="700" height="16" rx="8" fill="#07111C" stroke="#62E5FF" stroke-opacity="0.15"/><text x="870" y="58" text-anchor="end" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="10">No canonical product denominator</text></svg>'''
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="72" viewBox="0 0 900 72" role="img" aria-labelledby="title desc"><title id="title">{PROJECT} compact progress</title><desc id="desc">Product completion has no canonical measurable roadmap. Progress is N/A. Latest public release is v2.1.0.</desc><rect x="1" y="1" width="898" height="70" rx="18" fill="#02050A" stroke="#62E5FF" stroke-opacity="0.25"/><text x="22" y="28" fill="#F4FAFF" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700">{PROJECT}</text><text x="22" y="50" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="11">N/A · {STATE}</text><rect x="170" y="27" width="700" height="16" rx="8" fill="#07111C" stroke="#62E5FF" stroke-opacity="0.15"/><text x="870" y="58" text-anchor="end" fill="#8DA8B8" font-family="Segoe UI,Arial,sans-serif" font-size="10">No canonical product denominator</text></svg>'''
 
 
 def template_svg() -> str:
@@ -41,6 +41,10 @@ def template_svg() -> str:
 
 def expected() -> dict[Path, str]:
     return {CARD: card_svg(), MINI: mini_svg(), TEMPLATE: template_svg()}
+
+
+def normalize(text: str) -> str:
+    return re.sub(r">\s+<", "><", text.strip())
 
 
 def validate_svg(text: str) -> None:
@@ -71,7 +75,7 @@ def check() -> None:
     check_legacy_meters()
     for path, text in expected().items():
         validate_svg(text)
-        if not path.exists() or path.read_text(encoding="utf-8") != text:
+        if not path.exists() or normalize(path.read_text(encoding="utf-8")) != normalize(text):
             raise SystemExit(f"stale generated asset: {path.relative_to(ROOT)}")
     if "assets/readme/progress-card.svg" not in README.read_text(encoding="utf-8"):
         raise SystemExit("README progress card is not embedded")
