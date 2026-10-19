@@ -20,6 +20,12 @@
 
 </div>
 
+## 📸 Screenshot
+
+![czatpythom application screenshot](docs/screenshots/application.jpg)
+
+Actual CLI output from a local JSON-backend demo session, exported with Rich and rendered for readability. The message is sample data.
+
 <img width="100%" src="https://raw.githubusercontent.com/Swir/Swir/main/assets/power-divider-v4.svg" alt="SWIR electric divider" />
 
 ## 📍 Project Status
